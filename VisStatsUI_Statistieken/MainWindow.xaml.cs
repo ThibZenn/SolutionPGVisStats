@@ -25,7 +25,7 @@ namespace VisStatsUI_Statistieken
         VisStatsManager visStatsManager;
         IFileProcessor fileProcessor;
         IVisStatsRepository visStatsRepository;
-        string  connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=PGVisStats;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=PGVisStats;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
         ObservableCollection<VisSoort> AlleVissoorten;
         ObservableCollection<VisSoort> GeselecteerdeVissoorten;
 
@@ -38,7 +38,7 @@ namespace VisStatsUI_Statistieken
             visStatsManager = new VisStatsManager(fileProcessor, visStatsRepository);
             HavenComboBox.ItemsSource = visStatsManager.GeefHavens();
             HavenComboBox.SelectedIndex = 0;
-            JaarComboBox.ItemsSource=visStatsManager.GeefJaartallen();
+            JaarComboBox.ItemsSource = visStatsManager.GeefJaartallen();
             JaarComboBox.SelectedIndex = 0;
             AlleVissoorten = new ObservableCollection<VisSoort>(visStatsManager.GeefVissoorten());
             GeselecteerdeVissoorten = new ObservableCollection<VisSoort>();
@@ -61,7 +61,10 @@ namespace VisStatsUI_Statistieken
         {
             List<VisSoort> soorten = new();
 
-            foreach (VisSoort v in AlleSoortenListBox.SelectedItems) soorten.Add(v);
+            foreach (VisSoort v in AlleSoortenListBox.SelectedItems)
+            {
+                soorten.Add(v);
+            }
             foreach (VisSoort v in soorten)
             {
                 GeselecteerdeVissoorten.Add(v);
@@ -76,8 +79,8 @@ namespace VisStatsUI_Statistieken
             foreach (VisSoort v in GeselecteerdeSoortenLisBox.SelectedItems) soorten.Add(v);
             foreach (VisSoort v in soorten)
             {
-                GeselecteerdeVissoorten.Add(v);
-                AlleVissoorten.Remove(v);
+                GeselecteerdeVissoorten.Remove(v);
+                AlleVissoorten.Add(v);
             }
         }
 
@@ -100,7 +103,7 @@ namespace VisStatsUI_Statistieken
             {
                 eenheid = Eenheid.euro;
             }
-            List<Jaarvangst> vangst = visStatsManager.GeefVangst((int)JaarComboBox.SelectedIndex, (Haven)HavenComboBox.SelectedItem, GeselecteerdeVissoorten.ToList(), eenheid);
+            List<Jaarvangst> vangst = visStatsManager.GeefVangst((int)JaarComboBox.SelectedItem, (Haven)HavenComboBox.SelectedItem, GeselecteerdeVissoorten.ToList(), eenheid);
             //
             StatistiekenWindow w = new StatistiekenWindow((int)JaarComboBox.SelectedItem, (Haven)HavenComboBox.SelectedItem, vangst, eenheid);
             w.ShowDialog();

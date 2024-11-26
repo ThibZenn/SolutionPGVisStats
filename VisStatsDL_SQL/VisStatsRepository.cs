@@ -182,7 +182,7 @@ namespace VisStatsDL_SQL
 
         public List<int> LeesJaartallen()
         {
-            string SQL = "SELECT distinct jaar from VisStats";
+            string SQL = "SELECT distinct jaar FROM VisStats";
             List<int> list = new List<int>();
             using (SqlConnection conn = new SqlConnection(_connectionString))
             using (SqlCommand cmd = conn.CreateCommand())

@@ -30,7 +30,7 @@
             <TextBox Grid.Row="0" Grid.Column="5" Name="EenheidTextBox" IsEnabled="False" 
       Margin="5"/>
             <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Name="StatistiekenDataGrid"
-               IsReadOnly="True" ColumnWidth="" Margin="5"/>
+               IsReadOnly="True" ColumnWidth="*" Margin="5"/>
         </Grid>
     </Grid>
 </Window>
