@@ -24,10 +24,10 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Haven" Margin="5"/>
-                <ComboBox Grid.Column="1" Name="HavenComboBox" Margin="5,5,0,5" HorizontalAlignment="Left" Width="397"/>
+                <ComboBox Grid.Column="1" Name="HavenComboBox" Margin="5"/>
                 <Label Grid.Column="2" Content="Jaar" Margin="5"/>
-                <ComboBox Name="JaarComboBox" Margin="44,551,290,-541" Grid.ColumnSpan="2"/>
-                <Label Grid.Column="4" Content="Eenheid" Margin="5"/>
+                <ComboBox Grid.Column="3" Name="JaarComboBox" Margin="5"/>
+                <Label Grid.Column="4" Content="Eenheid :" Margin="5"/>
                 <RadioButton Grid.Column="5" Content="kg" Margin="5" Name="KgRadioButton"
                           VerticalAlignment="Center" IsChecked="True"/>
                 <RadioButton Grid.Column="6" Content="euro" Margin="5" Name="EuroRadioButton"
